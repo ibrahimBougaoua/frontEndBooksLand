@@ -1,0 +1,85 @@
+
+.home-header {
+background-image: url(https://www.plex.tv/wp-content/uploads/2020/04/avod-hero-april-2020-1800x1013.png);
+width: 100%;
+height: 25vw;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+border-radius: 0;
+}
+.bg-footer {
+background-color: #28a745;
+}
+#mainNav {
+  box-shadow: 0 1px 30px rgba(0, 0, 0, 0.35);
+}
+.card-home {
+  margin-right: 0;
+  margin-bottom: 0;
+  border-radius: 0;
+  border: 0px;
+}
+.text-dt-color {
+  color: #28a745;
+}
+.icone-play {
+  width: 100%;
+  height: 100%;
+ /* left: 38vw; */
+}
+.icone-play-header {
+  width: 8vw;
+  height: 100%;
+  left: 40vw;
+  background-color: #28a745;
+}
+.theme {
+  background-color: #28a745;
+}
+.jumbotron {
+  background-color: transparent;
+}
+/*
+.css {
+  background-color: blueviolet;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+*/
