@@ -53,20 +53,12 @@ return (
 
 <Nav name="History"></Nav>
 
-<p className="lead text-sm-left">Type of history</p>
+<p className="lead text-sm-left">history</p>
 
-<nav className="mb-3">
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-view-tab" data-toggle="tab" href="#nav-view" role="tab" aria-controls="nav-cviewontact" aria-selected="true">View</a>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-
-<div class="tab-pane fade show active" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">
+<div class="col-md-12">
 {historyViews}
 </div>
 
-</div>
 
 </div>
 
