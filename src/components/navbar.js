@@ -18,6 +18,14 @@ function HasLogin(){
   const red = () => {
         window.location.replace("/account")
   }
+  
+// handle button click of login form
+const Logout = () => {
+  localStorage.removeItem("tokeb");
+  localStorage.removeItem("email");
+  window.location.replace("/")
+}
+
   return  <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
@@ -30,7 +38,10 @@ function HasLogin(){
         <Link className="btn btn-sm btn-outline-success mr-2" to={"/abonnements"}><i class="far fa-bell"></i> Abonnements</Link>
       </li>
       <li className="nav-item">
-        <button type="submit" className="btn btn-sm btn-outline-success" onClick={red}><i class="fas fa-user"></i> Account</button>
+        <button type="submit" className="btn btn-sm btn-outline-success mr-2" onClick={red}><i class="fas fa-user"></i> Account</button>
+      </li>
+      <li className="nav-item">
+        <button type="submit" className="btn btn-sm btn-outline-success" onClick={Logout}><i class="fas fa-out"></i> Logout</button>
       </li>
     </ul>
   </div>;

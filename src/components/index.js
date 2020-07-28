@@ -29,12 +29,13 @@ async function resultat(a,b) {
 export default class Index extends Component {
 
   componentDidMount =()=>{
+    if(this.state.search !== ''){
     resultat(this.state.search,this.state.cate).then(response => {
       this.setState({
         dataBooks: response.data
       });
-    });
-    
+    }); 
+  }
   }
 
   constructor(props) {
@@ -69,7 +70,7 @@ export default class Index extends Component {
   }
 
 render() {
-
+  
 // handle button click of login form
 const searchBooks = () => {
   axios.get('http://127.0.0.1:5001/book/search', {params : {search: this.state.search,  cate:this.state.cate, email:localStorage.getItem('email')}})
@@ -100,13 +101,38 @@ return (
             <option value="author">author</option>
             <option value="tag">tag</option>
           </select>
-          <button className="btn btn-sm btn-outline-success my-sm-0 ml-2" onClick={searchBooks} type="submit">Search</button>
+          <button className="btn btn-sm btn-outline-success my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal" onClick={searchBooks} type="submit">Search</button>
       </form>
 </div>
 
 {
   this.state.visible
-    ? <Resultat link="/book/single/" elements={this.state.searchDataBooks}></Resultat>
+    ? <div className="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog modal-xl" role="document">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Searching...</h5>
+        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div className="modal-body">
+      <div className="card border-0 rounded-0 shadow-sm bg-light">
+	<div className="row no-gutters">
+	<div className="col-md-12">
+    
+  <Resultat link="/book/single/" elements={this.state.searchDataBooks}></Resultat>
+
+	</div>
+	</div>
+      </div>
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     : null
 }
 

@@ -15,6 +15,7 @@ const listItems = props.elements.map((element) =>
 	<small className="text-muted">{element[4]}</small><br />
 	<small className="text-muted">{element[11]}</small><br />
 	{element[7].split(',').map((element) => <Link className="btn btn-sm btn-outline-info mr-2 mt-2 mb-2" to={"/account/tag/" + element}>{element}</Link>)}<br />
+	<Link className="btn btn-sm btn-outline-info mr-2 mt-2 mb-2" to={"/book/single/" + element[0]}>show More</Link>
 	</div>
 	</div>
 	</div>

@@ -49,7 +49,7 @@ const handleLogin = () => {
 }
 
 if(localStorage.getItem('email')){
-   window.location.replace("/panel")
+   window.location.replace("/account")
 }
 
 return (
