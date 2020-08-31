@@ -11,7 +11,7 @@ async function recommended() {
     } catch (error) {
       console.error(error);
     }
-  }
+}
 
 // get age from access token -> data
 async function recommendedByAge() {
@@ -22,7 +22,18 @@ async function recommendedByAge() {
     } catch (error) {
       console.error(error);
     }
-  }
+}
+
+// get age from access token -> data
+async function recommendedBySexe() {
+    try {
+      const response = await axios.get('http://127.0.0.1:5001/book/sexe/' + localStorage.getItem('email'));
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+}
 
 // get country from access token -> data
 async function recommendedByCountry() {
@@ -41,7 +52,8 @@ export default class Letest extends Component {
     state = {
         recommend: [],
         booksByAgs: [],
-        booksByCountry: []
+        booksByCountry: [],
+        booksBySexe: []
       }
     
       componentDidMount =()=>{
@@ -60,6 +72,11 @@ export default class Letest extends Component {
             booksByCountry: response.data
           });
         });
+        recommendedBySexe().then(response => {
+          this.setState({
+            booksBySexe: response.data
+          });
+        });
       }
 
 render() {
@@ -69,6 +86,7 @@ return (
     <Post name="Recommended" link="/account/single/" elements={this.state.recommend}></Post>
     <Post name="Users your age like this" link="/account/single/" elements={this.state.booksByAgs}></Post>
     <Post name="Users in your area like" link="/account/single/" elements={this.state.booksByCountry}></Post>
+    <Post name="Users your sexe like this" link="/account/single/" elements={this.state.booksBySexe}></Post>
     </div>
 );
 
