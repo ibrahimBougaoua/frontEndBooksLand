@@ -5,7 +5,7 @@ import axios from 'axios';
 // handle button click of login form
 async function recommended() {
     try {
-      const response = await axios.get('http://127.0.0.1:5001/book/recommended');
+      const response = await axios.get('http://127.0.0.1:5001/book/recommended/' + localStorage.getItem('email'));
       console.log(response);
       return response;
     } catch (error) {
