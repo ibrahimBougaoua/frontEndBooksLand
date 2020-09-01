@@ -5,7 +5,7 @@ import axios from 'axios';
 // handle button click of login form
 async function recommended() {
     try {
-      const response = await axios.get('http://127.0.0.1:5001/book/recommended');
+      const response = await axios.get('http://127.0.0.1:5001/book/recommended/' + localStorage.getItem('email'));
       console.log(response);
       return response;
     } catch (error) {
@@ -35,12 +35,23 @@ async function recommendedByCountry() {
     }
   }
 
+// get age from access token -> data
+async function recommendedBySexe() {
+  try {
+    const response = await axios.get('http://127.0.0.1:5001/book/sexe/' + localStorage.getItem('email'));
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export default class Letest extends Component {
 
     state = {
         recommend: [],
         booksByAgs: [],
+        booksBySexe: [],
         booksByCountry: []
       }
     
@@ -60,15 +71,21 @@ export default class Letest extends Component {
             booksByCountry: response.data
           });
         });
+        recommendedBySexe().then(response => {
+          this.setState({
+            booksBySexe: response.data
+          });
+        });
       }
-
+      
 render() {
 
 return (
     <div>
-    <Post name="Recommended" link="/book/single/" elements={this.state.recommend}></Post>
-    <Post name="Users your age like this" link="/book/single/" elements={this.state.booksByAgs}></Post>
-    <Post name="Users in your area like" link="/book/single/" elements={this.state.booksByCountry}></Post>
+    <Post name="Recommandé pour vous" link="/book/single/" elements={this.state.recommend}></Post>
+    <Post name="Utilisateurs de votre âge comme celui-ci" link="/book/single/" elements={this.state.booksByAgs}></Post>
+    <Post name="Les utilisateurs de votre région aiment" link="/book/single/" elements={this.state.booksByCountry}></Post>
+    <Post name="Utilisateurs de votre sexe comme celui-ci" link="/book/single/" elements={this.state.booksBySexe}></Post>
     </div>
 );
 

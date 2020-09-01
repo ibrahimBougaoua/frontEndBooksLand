@@ -83,10 +83,10 @@ render() {
 
 return (
     <div>
-    <Post name="Recommended" link="/account/single/" elements={this.state.recommend}></Post>
-    <Post name="Users your age like this" link="/account/single/" elements={this.state.booksByAgs}></Post>
-    <Post name="Users in your area like" link="/account/single/" elements={this.state.booksByCountry}></Post>
-    <Post name="Users your sexe like this" link="/account/single/" elements={this.state.booksBySexe}></Post>
+    <Post name="Recommandé pour vous" link="/account/single/" elements={this.state.recommend}></Post>
+    <Post name="Utilisateurs de votre âge comme celui-ci" link="/account/single/" elements={this.state.booksByAgs}></Post>
+    <Post name="Les utilisateurs de votre région aiment" link="/account/single/" elements={this.state.booksByCountry}></Post>
+    <Post name="Utilisateurs de votre sexe comme celui-ci" link="/account/single/" elements={this.state.booksBySexe}></Post>
     </div>
 );
 

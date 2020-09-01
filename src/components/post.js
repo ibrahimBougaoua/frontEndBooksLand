@@ -19,11 +19,11 @@ return <div>
 <div className="col-md-12 mb-5">
 
 <div className="card-deck mb-1">
-    {listItems(props.elements.slice(0,8))}
+    {listItems(props.elements.slice(0,7))}
 </div>
 
 <div className="card-deck mb-1">
-    {listItems(props.elements.slice(8,16))}
+    {listItems(props.elements.slice(7,14))}
 </div>
 
 </div>

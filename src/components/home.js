@@ -5,7 +5,7 @@ import axios from 'axios';
 // handle button click of login form
 async function recommended() {
   try {
-    const response = await axios.get('http://127.0.0.1:5001/book/recommended');
+    const response = await axios.get('http://127.0.0.1:5001/book/recommended/' + localStorage.getItem('email'));
     console.log(response);
     return response;
   } catch (error) {
@@ -28,6 +28,17 @@ async function recommendedByAge() {
 async function recommendedByCountry() {
   try {
     const response = await axios.get('http://127.0.0.1:5001/book/country/' + localStorage.getItem('email'));
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// get country from access token -> data
+async function recommendedBySexe() {
+  try {
+    const response = await axios.get('http://127.0.0.1:5001/book/sexe/' + localStorage.getItem('email'));
     console.log(response);
     return response;
   } catch (error) {
@@ -69,6 +80,11 @@ if(localStorage.getItem('email')){
         booksByCountry: response.data
       });
     });
+    recommendedBySexe().then(response => {
+      this.setState({
+        booksBySexe: response.data
+      });
+    });
   }
     getTopData().then(response => {
       this.setState({
@@ -78,7 +94,7 @@ if(localStorage.getItem('email')){
 
   }
 
-  state = {visible: false,visibleComponent: false,recommend: [],booksByAgs: [], booksByCountry: [], searchDataBooks: [],books: []};
+  state = {visible: false,visibleComponent: false,recommend: [],booksByAgs: [],booksBySexe: [], booksByCountry: [], searchDataBooks: [],books: []};
 
 render() {
 
@@ -111,22 +127,33 @@ return (
               
 {
   this.state.visibleComponent
-    ? <Post name="Recommended" link="/book/single/" elements={this.state.recommend}></Post>
+    ? <div className="col-md-12"><Post name="Recommandé pour vous" link="/book/single/" elements={this.state.recommend}></Post></div>
     : null
 }     
 
 {
   this.state.visibleComponent
-    ? <Post name="Users your age like this" link="/book/single/" elements={this.state.booksByAgs}></Post>
+    ? <div className="col-md-12"><Post name="Utilisateurs de votre âge comme celui-ci" link="/book/single/" elements={this.state.booksByAgs}></Post></div>
     : null
 }       
 
 {
   this.state.visibleComponent
-    ? <Post name="Users in your area like" link="/book/single/" elements={this.state.booksByCountry}></Post>
+    ? <div className="col-md-12"><Post name="Les utilisateurs de votre région aiment" link="/book/single/" elements={this.state.booksByCountry}></Post></div>
     : null
 }
-                <Post name="Top rating" link="/book/single/" elements={this.state.books}></Post>
+
+{
+  this.state.visibleComponent
+    ? <div className="col-md-12"><Post name="Utilisateurs de votre sexe comme celui-ci" link="/book/single/" elements={this.state.booksBySexe}></Post></div>
+    : null
+}
+
+{
+  !this.state.visibleComponent
+    ? <div className="col-md-12"><Post name="Top rating" link="/book/single/" elements={this.state.books}></Post></div>
+    : null
+}
             </div>
         </div>
     </div>
