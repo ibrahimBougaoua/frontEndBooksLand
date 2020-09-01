@@ -68,12 +68,13 @@ render() {
 	);
 
 
-const books = this.state.books.map((element) => 
+const books = this.state.books.map((elements) => 
+elements.map((element) => 
 <div className="col-md-4">
 <div className="card mb-5 border-0 rounded-0 shadow-sm bg-light">
 <div className="row no-gutters">
 <div className="col-md-4">
-  <img src="https://m.media-amazon.com/images/M/MV5BZDczYjU4MDMtY2RjMy00Y2UyLWE2MmMtZjliYWUwNzQ3YjExXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg" class="card-img rounded-0" alt="..." />
+  <img src={element[10]} class="card-img rounded-0" alt="..." />
 </div>
 <div className="col-md-8">
   <div className="pl-2">
@@ -84,14 +85,14 @@ const books = this.state.books.map((element) =>
 </div>
 </div>
 </div>
-	);
+	));
 
 
 return (
     <div>
 
     <div className="container">
-
+      
     <Nav name="Abonnements"></Nav>
 
     <div className="row">
@@ -102,7 +103,9 @@ return (
     
     </div>
     
+    <div className="row">
     {books}
+    </div>
 
     </div>
 );
